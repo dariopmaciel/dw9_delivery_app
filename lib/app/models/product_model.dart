@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-//11:00
 
 class ProductModel {
   final String id;
