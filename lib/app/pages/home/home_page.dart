@@ -1,3 +1,5 @@
+import 'package:dark_week/app/core/ui/widgets/delivery_appbar.dart';
+import 'package:dark_week/app/pages/home/widget/delivery_product_tile.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -6,10 +8,19 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(''),
+      appBar: DeliveryAppbar(),
+      body: Column(
+        children: [
+          Expanded(
+            child: ListView.builder(
+              itemCount: 5,
+              itemBuilder: (context, index) {
+                return DeliveryProductTile();
+              },
+            ),
+          )
+        ],
       ),
-      body: Container(),
     );
   }
 }
