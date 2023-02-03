@@ -3,7 +3,7 @@ import 'dart:convert';
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 class ProductModel {
-  final String id;
+  final int id;
   final String name;
   final String description;
   final double price;
@@ -28,7 +28,7 @@ class ProductModel {
 
   factory ProductModel.fromMap(Map<String, dynamic> map) {
     return ProductModel(
-      id: map['id'] as String,
+      id: map['id'] as int,
       name: map['name'] as String,
       description: map['description'] as String,
       price: map['price'] as double,
@@ -39,6 +39,6 @@ class ProductModel {
   String toJson() => json.encode(toMap());
 
   factory ProductModel.fromJson(String source) =>
-  //ProductModel.fromMap(json.decode(source);
+      //ProductModel.fromMap(json.decode(source);
       ProductModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }
