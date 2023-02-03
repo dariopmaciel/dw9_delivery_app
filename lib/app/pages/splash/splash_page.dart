@@ -34,14 +34,12 @@ class SplashPage extends StatelessWidget {
               child: Column(
                 children: [
                   SizedBox(
-                    height: context.screenHeight * 0.3,
+                    height: context.screenHeight * 0.15,
                   ),
                   Image.asset(
                     "assets/images/logo.png",
                   ),
-                  const SizedBox(
-                    height: 80,
-                  ),
+                  const SizedBox(height: 80),
                   DeliveryButtom(
                     width: context.percentWidth(.5),
                     height: 35,
