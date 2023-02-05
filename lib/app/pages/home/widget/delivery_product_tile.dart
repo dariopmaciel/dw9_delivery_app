@@ -31,7 +31,8 @@ class DeliveryProductTile extends StatelessWidget {
                   padding: const EdgeInsets.only(bottom: 5),
                   child: Text(
                     "Pão americanos, blend de 120g, mussarela, tomate, maionese da casa. ",
-                    style: context.textStyles.textLight.copyWith(fontSize: 14),
+                    style:
+                        context.textStyles.textRegular.copyWith(fontSize: 14),
                   ),
                 ),
                 Padding(
