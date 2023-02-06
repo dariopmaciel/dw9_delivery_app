@@ -32,7 +32,7 @@ class DeliveryProductTile extends StatelessWidget {
                   child: Text(
                     "Pão americanos, blend de 120g, mussarela, tomate, maionese da casa. ",
                     style:
-                        context.textStyles.textRegular.copyWith(fontSize: 14),
+                        context.textStyles.textRegular.copyWith(fontSize: 13),
                   ),
                 ),
                 Padding(
@@ -40,9 +40,7 @@ class DeliveryProductTile extends StatelessWidget {
                   child: Text(
                     product.price.currencyPTBR,
                     style: context.textStyles.textMidium.copyWith(
-                      fontSize: 11,
-                      color: context.colors!.secondary,
-                    ),
+                        fontSize: 12, color: context.colors!.secondary),
                   ),
                 ),
               ],
