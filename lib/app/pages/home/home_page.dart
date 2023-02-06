@@ -1,14 +1,24 @@
+import 'package:dark_week/app/core/ui/helpers/loader.dart';
 import 'package:dark_week/app/core/ui/widgets/delivery_appbar.dart';
 import 'package:dark_week/app/models/product_model.dart';
 import 'package:dark_week/app/pages/home/widget/delivery_product_tile.dart';
 import 'package:flutter/material.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
   @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> with Loader {
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        showLoader();
+        Future.delayed(Duration(seconds: 2));
+      }),
       appBar: DeliveryAppbar(),
       body: Column(
         children: [
