@@ -32,9 +32,12 @@ class _HomePageState extends State<HomePage> with Loader, Messages {
       body: BlocConsumer<HomeController, HomeState>(
         listener: (context, state) {
           state.status.matchAny(
-            any: () => hideLoader(),
-            loading: () => showLoader(),
-          );
+              any: () => hideLoader(),
+              loading: () => showLoader(),
+              error: () {
+                hideLoader();
+                showError(state.errorMessage ?? "Error não informado");
+              });
           //
         },
         buildWhen: (previous, current) => current.status.matchAny(
