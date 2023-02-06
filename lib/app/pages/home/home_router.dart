@@ -1,4 +1,5 @@
 import 'package:dark_week/app/core/rest_client/custom_dio.dart';
+import 'package:dark_week/app/pages/home/home_controler.dart';
 import 'package:dark_week/app/pages/home/home_page.dart';
 import 'package:dark_week/app/repositories/products/products_repository.dart';
 import 'package:dark_week/app/repositories/products/products_repository_impl.dart';
@@ -14,7 +15,10 @@ class HomeRouter {
             create: (context) => ProductsRepositoryImpl(
               dio: context.read<CustomDio>(),
             ),
-          )
+          ),
+          Provider(
+            create: (context) => HomeController(context.read()),
+          ),
         ],
         child: HomePage(),
       );
