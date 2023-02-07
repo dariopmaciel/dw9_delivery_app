@@ -1,14 +1,27 @@
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:dark_week/app/core/extensions/formater_extension.dart';
+import 'package:dark_week/app/core/ui/base_state/base_state.dart';
 import 'package:dark_week/app/core/ui/helpers/size_extensions.dart';
 import 'package:dark_week/app/core/ui/styles/text_styler.dart';
 import 'package:dark_week/app/core/ui/widgets/delivery_appbar.dart';
+import 'package:dark_week/app/models/product_model.dart';
+import 'package:dark_week/app/pages/product_detail/product_detail_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/ui/widgets/delivery_increment_decremente_button.dart';
 
-class ProductDetailPage extends StatelessWidget {
-  const ProductDetailPage({super.key});
+class ProductDetailPage extends StatefulWidget {
+  final ProductModel product;
 
+  const ProductDetailPage({super.key, required this.product});
+
+  @override
+  State<ProductDetailPage> createState() => _ProductDetailPageState();
+}
+
+class _ProductDetailPageState
+    extends BaseState<ProductDetailPage, ProductDetailController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,11 +32,10 @@ class ProductDetailPage extends StatelessWidget {
           Container(
             width: context.screenWidth,
             height: context.percentHeight(0.4),
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               color: Colors.blueAccent,
               image: DecorationImage(
-                image: NetworkImage(
-                    "https://assets.unileversolutions.com/recipes-v2/106684.jpg?imwidth=800"),
+                image: NetworkImage(widget.product.image),
                 //estica a imagem sem distorcer a imagem, cortando as estremidades
                 fit: BoxFit.cover,
               ),
@@ -33,17 +45,17 @@ class ProductDetailPage extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child: Text(
-              "X - Burguer",
+              widget.product.name,
               style: context.textStyles.textExtraBold.copyWith(fontSize: 22),
             ),
           ),
           const SizedBox(height: 10),
-          const Expanded(
+          Expanded(
             child: Padding(
-              padding: EdgeInsets.symmetric(horizontal: 10),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: SingleChildScrollView(
                 child: Text(
-                  "Lanche acomplanha, pão hamburguer, mussarela, catchup e maionese",
+                  widget.product.description,
                   //style: context.textStyles.textBold.copyWith(fontSize: 16),
                 ),
               ),
@@ -57,36 +69,54 @@ class ProductDetailPage extends StatelessWidget {
                 width: context.percentWidth(.5),
                 height: 68,
                 padding: const EdgeInsets.all(8),
-                child: const DeliveryIncrementDecrementeButton(),
+                child: BlocBuilder<ProductDetailController, int>(
+                  builder: (context, amout) {
+                    return DeliveryIncrementDecrementeButton(
+                      decrementTap: () {
+                        controller.decrement();
+                        print("Decremento");
+                      },
+                      incrementTap: () {
+                        controller.increment();
+                        print("Incremento");
+                      },
+                      amout: amout,
+                    );
+                  },
+                ),
               ),
               Container(
                 width: context.percentWidth(0.5),
                 height: 68,
                 padding: const EdgeInsets.all(8),
-                child: ElevatedButton(
-                  onPressed: () {},
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        "Adicionar",
-                        style: context.textStyles.textExtraBold
-                            .copyWith(fontSize: 13),
-                        textAlign: TextAlign.start,
+                child: BlocBuilder<ProductDetailController, int>(
+                  builder: (context, amount) {
+                    return ElevatedButton(
+                      onPressed: () {},
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            "Adicionar",
+                            style: context.textStyles.textExtraBold
+                                .copyWith(fontSize: 13),
+                            textAlign: TextAlign.start,
+                          ),
+                          const SizedBox(width: 10),
+                          Expanded(
+                            child: AutoSizeText(
+                              (widget.product.price * amount).currencyPTBR,
+                              maxFontSize: 13,
+                              minFontSize: 8,
+                              maxLines: 1,
+                              style: context.textStyles.textExtraBold,
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
                       ),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: AutoSizeText(
-                          r"R$699,99",
-                          maxFontSize: 13,
-                          minFontSize: 8,
-                          maxLines: 1,
-                          style: context.textStyles.textExtraBold,
-                          textAlign: TextAlign.center,
-                        ),
-                      ),
-                    ],
-                  ),
+                    );
+                  },
                 ),
               )
             ],

@@ -4,7 +4,16 @@ import 'package:dark_week/app/core/ui/styles/text_styler.dart';
 import 'package:flutter/material.dart';
 
 class DeliveryIncrementDecrementeButton extends StatelessWidget {
-  const DeliveryIncrementDecrementeButton({super.key});
+  final int amout;
+  final VoidCallback incrementTap;
+  final VoidCallback decrementTap;
+
+  const DeliveryIncrementDecrementeButton({
+    super.key,
+    required this.amout,
+    required this.incrementTap,
+    required this.decrementTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -15,28 +24,34 @@ class DeliveryIncrementDecrementeButton extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: Text(
-              "-",
-              style: context.textStyles.textMidium.copyWith(
-                fontSize: 22,
-                color: Colors.grey,
+          InkWell(
+            onTap: decrementTap,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: Text(
+                "-",
+                style: context.textStyles.textMidium.copyWith(
+                  fontSize: 22,
+                  color: Colors.grey,
+                ),
               ),
             ),
           ),
           Text(
-            "1",
+            amout.toString(),
             style: context.textStyles.textRegular
                 .copyWith(fontSize: 17, color: context.colors?.secondary),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: Text(
-              "+",
-              style: context.textStyles.textMidium.copyWith(
-                fontSize: 22,
-                color: Colors.grey,
+          InkWell(
+            onTap: incrementTap,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10.0),
+              child: Text(
+                "+",
+                style: context.textStyles.textMidium.copyWith(
+                  fontSize: 22,
+                  color: Colors.grey,
+                ),
               ),
             ),
           ),
