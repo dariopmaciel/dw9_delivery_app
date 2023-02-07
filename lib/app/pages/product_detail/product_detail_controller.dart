@@ -12,4 +12,4 @@ class ProductDetailController extends Cubit<int> {
 }
 
 
-//50:09
+//01:02:00
