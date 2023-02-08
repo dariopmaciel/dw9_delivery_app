@@ -1,21 +1,32 @@
+import 'package:dark_week/app/core/dto/order_product_dto.dart';
 import 'package:dark_week/app/core/extensions/formater_extension.dart';
 import 'package:dark_week/app/core/ui/styles/colors_app.dart';
 import 'package:dark_week/app/core/ui/styles/text_styler.dart';
 import 'package:dark_week/app/models/product_model.dart';
+import 'package:dark_week/app/pages/home/home_controler.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class DeliveryProductTile extends StatelessWidget {
   final ProductModel product;
+  final OrderProductDto? orderProduct;
 
-  const DeliveryProductTile({super.key, required this.product});
+  const DeliveryProductTile(
+      {super.key, required this.product, this.orderProduct});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () async {
-        Navigator.of(context).pushNamed("/productDetail", arguments: {
+        final controller = context.read<HomeController>();
+        final orderProductResult =
+            await Navigator.of(context).pushNamed("/productDetail", arguments: {
           "product": product,
+          "order": orderProduct,
         });
+        if (orderProductResult != null) {
+          controller.addOrUpdateBag(orderProductResult as OrderProductDto);
+        }
       },
       child: Padding(
         padding: const EdgeInsets.all(10.0),

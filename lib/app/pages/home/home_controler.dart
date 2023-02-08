@@ -3,6 +3,7 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
+import 'package:dark_week/app/core/dto/order_product_dto.dart';
 
 import 'package:dark_week/app/pages/home/home_state.dart';
 import 'package:dark_week/app/repositories/products/products_repository.dart';
@@ -30,5 +31,19 @@ class HomeController extends Cubit<HomeState> {
             errorMessage: "Erro ao buscar produtos"),
       );
     }
+  }
+
+  void addOrUpdateBag(OrderProductDto orderProduct) {
+    final shoppingBag = [...state.shoppingBag];
+
+    final orderIndex = shoppingBag
+        .indexWhere((orderP) => orderP.product == orderProduct.product);
+    if (orderIndex > -1) {
+      shoppingBag[orderIndex] = orderProduct;
+    } else {
+      shoppingBag.add(orderProduct);
+    }
+
+    emit(state.copyWith(shoppingBag: shoppingBag));
   }
 }

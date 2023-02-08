@@ -3,11 +3,11 @@ import 'package:dark_week/app/models/product_model.dart';
 
 class OrderProductDto {
   final ProductModel product;
-  final int amout;
+  final int amount;
   OrderProductDto({
     required this.product,
-    required this.amout,
+    required this.amount,
   });
 
-  double get totalProce => amout * product.price;
+  double get totalPrice => amount * product.price;
 }
