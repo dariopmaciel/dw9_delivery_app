@@ -6,6 +6,7 @@ import 'package:dark_week/app/models/product_model.dart';
 import 'package:dark_week/app/pages/home/home_controler.dart';
 import 'package:dark_week/app/pages/home/home_state.dart';
 import 'package:dark_week/app/pages/home/widget/delivery_product_tile.dart';
+import 'package:dark_week/app/pages/home/widget/shopping_bag_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
@@ -59,7 +60,11 @@ class _HomePageState extends BaseState<HomePage, HomeController> {
                     );
                   },
                 ),
-              )
+              ),
+              Visibility(
+                visible: state.shoppingBag.isNotEmpty,
+                child: ShoppingBagWidget(),
+              ),
             ],
           );
         },
