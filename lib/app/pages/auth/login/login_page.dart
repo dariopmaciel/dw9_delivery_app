@@ -1,6 +1,7 @@
 import 'package:dark_week/app/core/ui/styles/text_styler.dart';
 import 'package:dark_week/app/core/ui/widgets/delivery_appbar.dart';
 import 'package:dark_week/app/core/ui/widgets/delivery_buttom.dart';
+import 'package:dark_week/app/pages/auth/register/register_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -67,13 +68,13 @@ class LoginPage extends StatelessWidget {
                     ),
                     TextButton(
                       onPressed: () {
-                        //
-                        //
+                        Navigator.of(context).pushNamed("/auth/register");
                       },
                       child: Text(
                         "CADASTRE-SE",
-                        style: context.textStyles.textBold
-                            .copyWith(color: Colors.blue),
+                        style: context.textStyles.textBold.copyWith(
+                          color: Colors.blue,
+                        ),
                       ),
                     ),
                   ],
