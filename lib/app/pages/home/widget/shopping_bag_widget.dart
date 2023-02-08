@@ -3,11 +3,24 @@ import 'package:dark_week/app/core/extensions/formater_extension.dart';
 import 'package:dark_week/app/core/ui/helpers/size_extensions.dart';
 import 'package:dark_week/app/core/ui/styles/text_styler.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ShoppingBagWidget extends StatelessWidget {
   final List<OrderProductDto> bag;
 
   const ShoppingBagWidget({super.key, required this.bag});
+
+  Future<void> _goOrder(BuildContext context) async {
+    final navigator = Navigator.of(context);
+
+    final sharedpre = await SharedPreferences.getInstance();
+    if (!sharedpre.containsKey("accessToken")) {
+      //se não estiver logado, envio para login
+      final loginResult = await navigator.pushNamed('/auth/login');
+    } else {
+      //se estiver logado, envio para o order
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -21,8 +34,8 @@ class ShoppingBagWidget extends StatelessWidget {
       height: 90,
       decoration: const BoxDecoration(
         borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(30),
-          topRight: Radius.circular(30),
+          topLeft: Radius.circular(8),
+          topRight: Radius.circular(8),
         ),
         color: Colors.white,
         boxShadow: [
@@ -34,8 +47,7 @@ class ShoppingBagWidget extends StatelessWidget {
       ),
       child: ElevatedButton(
         onPressed: () {
-          //
-          //
+          _goOrder(context);
         },
         child: Stack(
           children: [
