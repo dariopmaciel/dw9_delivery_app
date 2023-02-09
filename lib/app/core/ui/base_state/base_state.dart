@@ -4,14 +4,14 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 //criação de classe abstrata, recebendo 2 tipos genericos onde 1 é uma classe StatefulWidget e 1 é uma classe blocBase que é uma bloc, extendemos State e adicionamos o loader e a mensagem.
-abstract class BaseState<T extends StatefulWidget, C extends BlocBase>
+abstract class BaseState<T extends StatefulWidget, Controller extends BlocBase>
     extends State<T> with Loader, Messages {
-  late final C controller;
+  late final Controller controller;
 
   @override
   void initState() {
     super.initState();
-    controller = context.read<C>();
+    controller = context.read<Controller>();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       onReady();
     });

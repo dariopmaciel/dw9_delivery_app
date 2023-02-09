@@ -3,9 +3,26 @@ import 'package:dark_week/app/core/ui/widgets/delivery_appbar.dart';
 import 'package:dark_week/app/core/ui/widgets/delivery_buttom.dart';
 import 'package:dark_week/app/pages/auth/register/register_page.dart';
 import 'package:flutter/material.dart';
+import 'package:validatorless/validatorless.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final formKey = GlobalKey<FormState>();
+  final _emailEC = TextEditingController();
+  final _passwordEC = TextEditingController();
+
+  @override
+  void dispose() {
+    _emailEC.dispose();
+    _passwordEC.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +34,7 @@ class LoginPage extends StatelessWidget {
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Form(
+                key: formKey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -30,20 +48,30 @@ class LoginPage extends StatelessWidget {
                       decoration: const InputDecoration(
                         labelText: "E-mail",
                       ),
+                      controller: _emailEC,
+                      validator: Validatorless.multiple([
+                        Validatorless.required("E-mail obrigatório!"),
+                        Validatorless.email("E-mail inválido."),
+                      ]),
                     ),
                     const SizedBox(height: 50),
                     TextFormField(
                       decoration: const InputDecoration(
                         labelText: "Senha",
                       ),
+                      controller: _passwordEC,
+                      validator: Validatorless.required("Senha obrigatória!"),
                     ),
                     const SizedBox(height: 60),
                     Center(
                       child: DeliveryButtom(
                         label: "ENTRAR",
                         onPressed: () {
-                          //
-                          //
+                          final valid =
+                              formKey.currentState?.validate() ?? false;
+                          if (valid) {
+                            //chamada
+                          }
                         },
                         width: double.infinity,
                       ),
