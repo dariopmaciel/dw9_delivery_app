@@ -8,11 +8,7 @@ class RegisterRouter {
 
   static Widget get page => MultiProvider(
         providers: [
-          Provider(
-            create: (context) => RegisterController(
-              context.read(),
-            ),
-          ),
+          Provider(create: (context) => RegisterController(context.read()))
         ],
         child: const RegisterPage(),
       );

@@ -12,13 +12,9 @@ class HomeRouter {
   static Widget get page => MultiProvider(
         providers: [
           Provider<ProductsRepository>(
-            create: (context) => ProductsRepositoryImpl(
-              dio: context.read<CustomDio>(),
-            ),
-          ),
-          Provider(
-            create: (context) => HomeController(context.read()),
-          ),
+              create: (context) =>
+                  ProductsRepositoryImpl(dio: context.read<CustomDio>())),
+          Provider(create: (context) => HomeController(context.read()))
         ],
         child: const HomePage(),
       );

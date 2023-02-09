@@ -5,7 +5,7 @@ import 'package:match/match.dart';
 import 'package:dark_week/app/dto/order_product_dto.dart';
 import 'package:dark_week/app/models/product_model.dart';
 
-part 'home_state.g.dart';
+part 'home_state.g.dart';//"TERMINAL: flutter pub run build_runner build"
 
 @match
 enum HomeStateStatus {
