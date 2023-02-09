@@ -1,5 +1,5 @@
 import 'package:auto_size_text/auto_size_text.dart';
-import 'package:dark_week/app/core/dto/order_product_dto.dart';
+import 'package:dark_week/app/dto/order_product_dto.dart';
 import 'package:dark_week/app/core/extensions/formater_extension.dart';
 import 'package:dark_week/app/core/ui/base_state/base_state.dart';
 import 'package:dark_week/app/core/ui/helpers/size_extensions.dart';

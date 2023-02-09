@@ -3,7 +3,7 @@
 import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
-import 'package:dark_week/app/core/dto/order_product_dto.dart';
+import 'package:dark_week/app/dto/order_product_dto.dart';
 
 import 'package:dark_week/app/pages/home/home_state.dart';
 import 'package:dark_week/app/repositories/products/products_repository.dart';

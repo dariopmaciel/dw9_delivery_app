@@ -2,7 +2,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:match/match.dart';
 
-import 'package:dark_week/app/core/dto/order_product_dto.dart';
+import 'package:dark_week/app/dto/order_product_dto.dart';
 import 'package:dark_week/app/models/product_model.dart';
 
 part 'home_state.g.dart';

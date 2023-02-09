@@ -1,4 +1,4 @@
-import 'package:dark_week/app/core/dto/order_product_dto.dart';
+import 'package:dark_week/app/dto/order_product_dto.dart';
 import 'package:dark_week/app/core/extensions/formater_extension.dart';
 import 'package:dark_week/app/core/ui/helpers/size_extensions.dart';
 import 'package:dark_week/app/core/ui/styles/text_styler.dart';
