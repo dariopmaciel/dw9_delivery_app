@@ -12,13 +12,11 @@ class ShoppingBagWidget extends StatelessWidget {
 
   Future<void> _goOrder(BuildContext context) async {
     final navigator = Navigator.of(context);
-
     final sharedpre = await SharedPreferences.getInstance();
     if (!sharedpre.containsKey("accessToken")) {
       //se não estiver logado, envio para login
       final loginResult = await navigator.pushNamed('/auth/login');
-    } else {
-      //se estiver logado, envio para o order
+      print(loginResult);
     }
   }
 
