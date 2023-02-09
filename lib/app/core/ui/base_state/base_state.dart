@@ -10,7 +10,6 @@ abstract class BaseState<T extends StatefulWidget, C extends BlocBase>
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     controller = context.read<C>();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
@@ -18,8 +17,5 @@ abstract class BaseState<T extends StatefulWidget, C extends BlocBase>
     });
   }
 
-  void onReady() {
-
-    
-  }
+  void onReady() {}
 }

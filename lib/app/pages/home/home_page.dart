@@ -1,15 +1,13 @@
 import 'package:dark_week/app/core/ui/base_state/base_state.dart';
-import 'package:dark_week/app/core/ui/helpers/loader.dart';
-import 'package:dark_week/app/core/ui/helpers/messages.dart';
+
 import 'package:dark_week/app/core/ui/widgets/delivery_appbar.dart';
-import 'package:dark_week/app/models/product_model.dart';
+
 import 'package:dark_week/app/pages/home/home_controler.dart';
 import 'package:dark_week/app/pages/home/home_state.dart';
 import 'package:dark_week/app/pages/home/widget/delivery_product_tile.dart';
 import 'package:dark_week/app/pages/home/widget/shopping_bag_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

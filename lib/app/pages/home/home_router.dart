@@ -20,6 +20,6 @@ class HomeRouter {
             create: (context) => HomeController(context.read()),
           ),
         ],
-        child: HomePage(),
+        child: const HomePage(),
       );
 }
