@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
+import 'package:equatable/equatable.dart';
 import 'package:match/match.dart';
 part 'register_state.g.dart'; //28:00 //"TERMINAL: flutter pub run build_runner build"
 
@@ -12,10 +13,10 @@ enum RegisterStatus {
   status,
 }
 
-class RegisterState {
+class RegisterState extends Equatable {
   final RegisterStatus status;
 
-  RegisterState({
+  const RegisterState({
     required this.status,
   });
 
@@ -28,4 +29,7 @@ class RegisterState {
       status: status ?? this.status,
     );
   }
+
+  @override
+  List<Object?> get props => [status];
 }
