@@ -50,14 +50,16 @@ class PaymentTypesField extends StatelessWidget {
                 {'value': 'VA', 'title': 'Vale Alimentação'},
                 {'value': 'VR', 'title': 'Vale Refeição'},
                 {'value': 'CC', 'title': 'Cartão de Crédito'},
+                {'value': 'PIX', 'title': 'Copiar Chave'},
               ],
+              //title: (index, item) => ' batata ${item['title']}',//customização em 2:03:00
               title: (index, item) => item['title'] ?? '',
               value: (index, item) => item['value'] ?? '',
               group: (index, item) => 'Selecione uma forma de pagamento',
             ),
             choiceType: S2ChoiceType.radios,
             choiceGrouped: true,
-            modalFilter: false,
+            modalFilter: false, //habilita filtro
             placeholder: '',
           )
         ],
