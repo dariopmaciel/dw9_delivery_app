@@ -13,11 +13,16 @@ class ShoppingBagWidget extends StatelessWidget {
   Future<void> _goOrder(BuildContext context) async {
     final navigator = Navigator.of(context);
     final sharedpre = await SharedPreferences.getInstance();
+
     if (!sharedpre.containsKey("accessToken")) {
       //se não estiver logado, envio para login
       final loginResult = await navigator.pushNamed('/auth/login');
-      print(loginResult);
+      //precisa verificar se sair da tela de login, precisa sair com o login efetuado
+      if (loginResult == null || loginResult == false) {
+        return;
+      }
     }
+    await navigator.pushNamed("/order", arguments: bag);
   }
 
   @override
@@ -27,7 +32,7 @@ class ShoppingBagWidget extends StatelessWidget {
         .currencyPTBR;
 
     return Container(
-      padding: EdgeInsets.all(15),
+      padding: const EdgeInsets.all(15),
       width: context.screenWidth,
       height: 90,
       decoration: const BoxDecoration(
