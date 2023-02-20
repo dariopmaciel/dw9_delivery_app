@@ -1,6 +1,7 @@
 import 'package:dark_week/app/core/ui/styles/colors_app.dart';
 import 'package:dark_week/app/core/ui/styles/text_styler.dart';
 import 'package:dark_week/app/core/ui/widgets/delivery_appbar.dart';
+import 'package:dark_week/app/core/ui/widgets/delivery_buttom.dart';
 import 'package:dark_week/app/dto/order_product_dto.dart';
 import 'package:dark_week/app/models/product_model.dart';
 import 'package:dark_week/app/pages/order/widget/order_field.dart';
@@ -49,7 +50,7 @@ class OrderPage extends StatelessWidget {
           ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
-              childCount: 2,
+              childCount: 10,
               (context, index) {
                 return Column(
                   children: [
@@ -111,7 +112,26 @@ class OrderPage extends StatelessWidget {
                   ),
                 ),
                 Divider(color: context.colors?.secondary, thickness: 2),
-                PaymentTypesField(),
+                const PaymentTypesField(),
+              ],
+            ),
+          ),
+          SliverFillRemaining(
+            hasScrollBody: false,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Divider(color: context.colors?.secondary, thickness: 2),
+                Padding(
+                  padding: const EdgeInsets.all(15.0),
+                  child: DeliveryButtom(
+                      width: double.infinity,
+                      height: 62,
+                      label: "FAZER PEDIDO",
+                      onPressed: () {
+                        //
+                      }),
+                ),
               ],
             ),
           ),
