@@ -10,6 +10,7 @@ part 'order_state.g.dart';
 enum OrderStatus {
   initial,
   loaded,
+  loading,
 }
 
 class OrderState extends Equatable {

@@ -6,7 +6,7 @@ import 'package:dark_week/app/pages/auth/login/login_router.dart';
 import 'package:dark_week/app/pages/auth/register/register_router.dart';
 import 'package:dark_week/app/pages/home/home_router.dart';
 import 'package:dark_week/app/pages/order/order_page.dart';
-import 'package:dark_week/app/pages/order/widget/order_router.dart';
+import 'package:dark_week/app/pages/order/order_router.dart';
 
 import 'package:dark_week/app/pages/product_detail/product_detail_router.dart';
 import 'package:dark_week/app/pages/splash/splash_page.dart';
