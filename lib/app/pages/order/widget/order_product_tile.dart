@@ -25,7 +25,6 @@ class OrderProductTile extends StatelessWidget {
         children: [
           Image.network(
             product.image,
-            //"https://assets.unileversolutions.com/recipes-v2/106684.jpg?imwidth=800",
             width: 100,
             height: 100,
             fit: BoxFit.cover,
