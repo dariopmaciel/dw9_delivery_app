@@ -28,7 +28,7 @@ class Dw9DeliveryApp extends StatelessWidget {
           "/productDetail": (context) => ProductDetailRouter.page, //5:07
           "/auth/login": (context) => LoginRouter.page,
           "/auth/register": (context) => RegisterRouter.page,
-          "/order": (context) => OrderRouter.pager,
+          "/order": (context) => OrderRouter.page,
         },
       ),
     );

@@ -1,18 +1,17 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-class PaymentTypesModel {
+class PaymentTypeModel {
   final int id;
   final String name;
   final String acronym;
   final bool enable;
-
-  PaymentTypesModel(
-    this.id,
-    this.name,
-    this.acronym,
-    this.enable,
-  );
+  PaymentTypeModel({
+    required this.id,
+    required this.name,
+    required this.acronym,
+    required this.enable,
+  });
 
   Map<String, dynamic> toMap() {
     return <String, dynamic>{
@@ -23,16 +22,17 @@ class PaymentTypesModel {
     };
   }
 
-  factory PaymentTypesModel.fromMap(Map<String, dynamic> map) {
-    return PaymentTypesModel(
-      map['id'] as int,
-      map['name'] as String,
-      map['acronym'] as String,
-      map['enable'] as bool,
+  factory PaymentTypeModel.fromMap(Map<String, dynamic> map) {
+    return PaymentTypeModel(
+      id: map['id'] as int,
+      name: map['name'] as String,
+      acronym: map['acronym'] as String,
+      enable: map['enable'] as bool,
     );
   }
 
   String toJson() => json.encode(toMap());
 
-  factory PaymentTypesModel.fromJson(String source) => PaymentTypesModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory PaymentTypeModel.fromJson(String source) =>
+      PaymentTypeModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }

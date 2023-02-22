@@ -8,14 +8,14 @@ class AuthInterceptor extends Interceptor {
     final sp = await SharedPreferences.getInstance();
     final accessToken = sp.getString("accessToken");
 
-    options.headers["Autorization"] = "Bearer $accessToken";
+    options.headers["Authorization"] = "Bearer $accessToken";
     handler.next(options);
   }
 
   @override
   void onError(DioError err, ErrorInterceptorHandler handler) async {
     if (err.response?.statusCode == 401) {
-      //Redirecinal o user para tela de Home fazer login novamente
+      //Redirecinar o user para tela de Home fazer login novamente
       final sp = await SharedPreferences.getInstance();
       sp.clear();
       handler.next(err);

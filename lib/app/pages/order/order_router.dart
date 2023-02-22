@@ -8,7 +8,7 @@ import 'package:provider/provider.dart';
 class OrderRouter {
   OrderRouter._();
 
-  static Widget get pager => MultiProvider(
+  static Widget get page => MultiProvider(
         providers: [
           Provider<OrderRepository>(
             create: (context) => OrderRepositoryImpl(dio: context.read()),
