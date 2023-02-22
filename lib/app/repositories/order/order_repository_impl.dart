@@ -18,7 +18,7 @@ class OrderRepositoryImpl implements OrderRepository {
   @override
   Future<List<PaymentTypeModel>> getAllPaymentsTypes() async {
     try {
-      final result = await dio.auth().get("/payment-types ");
+      final result = await dio.auth().get("/payment-types");
       return result.data
           .map<PaymentTypeModel>((p) => PaymentTypeModel.fromMap(p))
           .toList();
