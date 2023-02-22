@@ -5,6 +5,8 @@ import 'package:dark_week/app/core/ui/widgets/delivery_appbar.dart';
 import 'package:dark_week/app/core/ui/widgets/delivery_buttom.dart';
 import 'package:dark_week/app/dto/order_product_dto.dart';
 import 'package:dark_week/app/models/product_model.dart';
+import 'package:dark_week/app/pages/order/order_controller.dart';
+import 'package:dark_week/app/pages/order/order_state.dart';
 
 import 'package:dark_week/app/pages/order/widget/order_field.dart';
 import 'package:dark_week/app/pages/order/widget/order_product_tile.dart';
@@ -20,7 +22,15 @@ class OrderPage extends StatefulWidget {
   State<OrderPage> createState() => _OrderPageState();
 }
 
-class _OrderPageState extends State<OrderPage> {
+class _OrderPageState extends BaseState<OrderPage, OrderController> {
+  @override
+  void onReady() {
+    // TODO: implement onReady
+    final products =
+        ModalRoute.of(context)!.settings.arguments as List<OrderProductDto>;
+    controller.load(products);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -56,23 +66,26 @@ class _OrderPageState extends State<OrderPage> {
               ],
             ),
           ),
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              childCount: 1,
-              (context, index) {
-                return Column(
-                  children: [
-                    //Text("Produto $index"),
-                    OrderProductTile(
-                      index: index,
-                      orderProduct: OrderProductDto(
-                          product: ProductModel.fromMap({}), amount: 10),
-                    ),
-                    const Divider(color: Colors.grey),
-                  ],
-                );
-              },
-            ),
+          BlocSelector<OrderController, OrderState, List<OrderProductDto>>(
+            selector: (state) => state.orderProducts,
+            builder: (context, orderProducts) {
+              return SliverList(
+                delegate: SliverChildBuilderDelegate(
+                  childCount: orderProducts.length,
+                  (context, index) {
+                    final orderProduct = orderProducts[index];
+                    return Column(
+                      children: [
+                        //Text("Produto $index"),
+                        OrderProductTile(
+                            index: index, orderProduct: orderProduct),
+                        const Divider(color: Colors.grey),
+                      ],
+                    );
+                  },
+                ),
+              );
+            },
           ),
           SliverToBoxAdapter(
             child: Column(
