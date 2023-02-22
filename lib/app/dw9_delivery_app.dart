@@ -6,7 +6,6 @@ import 'package:dark_week/app/pages/auth/login/login_router.dart';
 import 'package:dark_week/app/pages/auth/register/register_router.dart';
 import 'package:dark_week/app/pages/home/home_router.dart';
 import 'package:dark_week/app/pages/order/order_page.dart';
-import 'package:dark_week/app/pages/order/order_router.dart';
 
 import 'package:dark_week/app/pages/product_detail/product_detail_router.dart';
 import 'package:dark_week/app/pages/splash/splash_page.dart';
@@ -28,7 +27,7 @@ class Dw9DeliveryApp extends StatelessWidget {
           "/productDetail": (context) => ProductDetailRouter.page, //5:07
           "/auth/login": (context) => LoginRouter.page,
           "/auth/register": (context) => RegisterRouter.page,
-          "/order": (context) => OrderRouter.page,
+          //"/order": (context) => OrderRouter.page,
         },
       ),
     );
