@@ -11,9 +11,7 @@ class OrderRouter {
   static Widget get page => MultiProvider(
         providers: [
           Provider<OrderRepository>(
-            create: (context) => OrderRepositoryImpl(
-              dio: context.read(),
-            ),
+            create: (context) => OrderRepositoryImpl(dio: context.read()),
           ),
           Provider(
             create: (context) => OrderController(context.read()),

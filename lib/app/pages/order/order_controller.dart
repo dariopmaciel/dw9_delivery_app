@@ -12,13 +12,14 @@ class OrderController extends Cubit<OrderState> {
 
   Future<void> load(List<OrderProductDto> products) async {
     try {
-      emit(state.copyWith(status: OrderStatus.loading));
-      final paymentTypes = await _orderRepository.getAllPaymentsTypes();
+      emit(state.copyWith(
+        status: OrderStatus.loading,
+      ));
+      // final paymentTypes = await _orderRepository.getAllPaymentsTypes();
       emit(
         state.copyWith(
-          orderProducts: products,
-          status: OrderStatus.loaded,
-          paymentTypes: paymentTypes,
+          orderProducts: products, status: OrderStatus.loaded,
+          // paymentTypes: paymentTypes,
         ),
       );
     } catch (e, s) {

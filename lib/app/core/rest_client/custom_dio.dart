@@ -1,5 +1,5 @@
 import 'package:dark_week/app/core/config/env/env.dart';
-import 'package:dark_week/app/core/rest_client/interceptor/auth_interceptor.dart';
+import 'package:dark_week/app/core/rest_client/interceptors/auth_interceptor.dart';
 import 'package:dio/dio.dart';
 import 'package:dio/native_imp.dart';
 
@@ -22,6 +22,7 @@ class CustomDio extends DioForNative {
     ));
     _authInterceptor = AuthInterceptor();
   }
+   
   CustomDio auth() {
     interceptors.add(_authInterceptor);
     return this;
