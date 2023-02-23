@@ -6,6 +6,7 @@ class PaymentTypeModel {
   final String name;
   final String acronym;
   final bool enable;
+
   PaymentTypeModel({
     required this.id,
     required this.name,
@@ -24,15 +25,15 @@ class PaymentTypeModel {
 
   factory PaymentTypeModel.fromMap(Map<String, dynamic> map) {
     return PaymentTypeModel(
-      id: map['id'] as int,
-      name: map['name'] as String,
-      acronym: map['acronym'] as String,
-      enable: map['enable'] as bool,
+      id: map['id'] ?? 0,
+      name: map['name'] ?? "",
+      acronym: map['acronym'] ?? "",
+      enable: map['enable'] ?? false,
     );
   }
 
   String toJson() => json.encode(toMap());
 
   factory PaymentTypeModel.fromJson(String source) =>
-      PaymentTypeModel.fromMap(json.decode(source) as Map<String, dynamic>);
+      PaymentTypeModel.fromMap(json.decode(source));
 }
