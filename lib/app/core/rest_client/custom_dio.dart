@@ -7,22 +7,20 @@ class CustomDio extends DioForNative {
   late AuthInterceptor _authInterceptor;
 
   CustomDio()
-      : super(
-          BaseOptions(
+      : super(BaseOptions(
             baseUrl: Env.i['backend_base_url'] ?? '',
             connectTimeout: 5000,
-            receiveTimeout: 60000,
-          ),
-        ) {
+            receiveTimeout: 60000)) {
     interceptors.add(LogInterceptor(
       requestBody: true,
       responseBody: true,
       requestHeader: true,
-      responseHeader: true
+      responseHeader: true,
     ));
+
     _authInterceptor = AuthInterceptor();
   }
-   
+
   CustomDio auth() {
     interceptors.add(_authInterceptor);
     return this;

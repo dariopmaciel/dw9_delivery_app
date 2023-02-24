@@ -1,5 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-//part 'home_state.g.dart';//"TERMINAL: flutter pub run build_runner build"
 
 import 'package:equatable/equatable.dart';
 import 'package:match/match.dart';
@@ -7,7 +6,7 @@ import 'package:match/match.dart';
 import 'package:dark_week/app/dto/order_product_dto.dart';
 import 'package:dark_week/app/models/payment_type_model.dart';
 
-part 'order_state.g.dart'; //"TERMINAL: flutter pub run build_runner build"
+part 'order_state.g.dart'; //28:00 //"TERMINAL: flutter pub run build_runner build"
 
 @match
 enum OrderStatus {

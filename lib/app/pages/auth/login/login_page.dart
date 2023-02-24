@@ -21,6 +21,8 @@ class _LoginPageState extends BaseState<LoginPage, LoginController> {
   final emailEC = TextEditingController();
   final passwordEC = TextEditingController();
 
+  bool _showPAssword = false;
+
   @override
   void dispose() {
     emailEC.dispose();
@@ -79,10 +81,23 @@ class _LoginPageState extends BaseState<LoginPage, LoginController> {
                       ),
                       const SizedBox(height: 50),
                       TextFormField(
-                        decoration: const InputDecoration(
+                        decoration: InputDecoration(
+                          //hintText:
+                          //icon: Icon(Icons.lock, color: Colors.black),
                           labelText: "Senha",
+                          suffixIcon: GestureDetector(
+                            child: Icon(_showPAssword == false
+                                ? Icons.visibility_off
+                                : Icons.visibility),
+                            onTap: () {
+                              setState(() {
+                                _showPAssword = !_showPAssword;
+                              });
+                            },
+                          ),
                         ),
                         controller: passwordEC,
+                        obscureText: _showPAssword == false ? true : false,
                         validator: Validatorless.required("Senha obrigatória!"),
                       ),
                       const SizedBox(height: 60),

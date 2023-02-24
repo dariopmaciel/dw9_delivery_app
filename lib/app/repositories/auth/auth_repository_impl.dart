@@ -22,9 +22,9 @@ class AuthRepositoryImpl implements AuthRepository {
         "email": email,
         "password": password,
       });
+      
       return AuthModel.fromMap(result.data);
     } on DioError catch (e, s) {
-
       if (e.response?.statusCode == 403) {
         log("Permissão negada", error: e, stackTrace: s);
         throw UnautorizedException();

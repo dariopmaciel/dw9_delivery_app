@@ -4,6 +4,7 @@ import 'package:dark_week/app/core/ui/styles/text_styler.dart';
 import 'package:dark_week/app/core/ui/widgets/delivery_appbar.dart';
 import 'package:dark_week/app/core/ui/widgets/delivery_buttom.dart';
 import 'package:dark_week/app/dto/order_product_dto.dart';
+import 'package:dark_week/app/models/payment_type_model.dart';
 import 'package:dark_week/app/models/product_model.dart';
 import 'package:dark_week/app/pages/order/order_controller.dart';
 import 'package:dark_week/app/pages/order/order_state.dart';
@@ -141,7 +142,13 @@ class _OrderPageState extends BaseState<OrderPage, OrderController> {
                     ),
                   ),
                   Divider(color: context.colors?.secondary, thickness: 2),
-                  const PaymentTypesField(),
+                  BlocSelector<OrderController, OrderState,
+                      List<PaymentTypeModel>>(
+                    selector: (state) => state.paymentTypes,
+                    builder: (context, paymentTypes) {
+                      return PaymentTypesField(paymentTypes: paymentTypes);
+                    },
+                  ),
                 ],
               ),
             ),

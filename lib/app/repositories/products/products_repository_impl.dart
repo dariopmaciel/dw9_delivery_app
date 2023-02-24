@@ -10,6 +10,7 @@ import 'package:dio/dio.dart';
 
 class ProductsRepositoryImpl implements ProductsRepository {
   final CustomDio dio;
+  
   ProductsRepositoryImpl({
     required this.dio,
   });

@@ -1,6 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 class PaymentTypeModel {
   final int id;
   final String name;
@@ -25,10 +25,10 @@ class PaymentTypeModel {
 
   factory PaymentTypeModel.fromMap(Map<String, dynamic> map) {
     return PaymentTypeModel(
-      id: map['id'] ?? 0,
-      name: map['name'] ?? "",
-      acronym: map['acronym'] ?? "",
-      enabled: map['enabled'] ?? false,
+      id: map['id'] as int,
+      name: map['name'] as String,
+      acronym: map['acronym'] as String,
+      enabled: map['enabled'] as bool,
     );
   }
 
