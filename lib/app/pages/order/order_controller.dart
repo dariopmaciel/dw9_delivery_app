@@ -13,24 +13,20 @@ class OrderController extends Cubit<OrderState> {
   Future<void> load(List<OrderProductDto> products) async {
     try {
       emit(state.copyWith(status: OrderStatus.loading));
-      //ao acrescentar esta linha o prog não carrega corretamente
-      //final paymentTypes = await _orderRepository.getAllPaymentsTypes();
+      // Erro ao acrescentar esta linha
+      final paymentTypes = await _orderRepository.getAllPaymentsTypes();
       emit(
         state.copyWith(
           orderProducts: products,
           status: OrderStatus.loaded,
-          //  ao acrescentar esta linha o prog não carrega corretamente
-          //  paymentTypes: paymentTypes,
+          // Erro ao acrescentar esta linha
+          paymentTypes: paymentTypes,
         ),
       );
     } catch (e, s) {
       log("Erro ao carregar PAGINA", error: e, stackTrace: s);
-      emit(
-        state.copyWith(
-          status: OrderStatus.error,
-          errorMessage: "Erro ao carregar página",
-        ),
-      );
+      emit(state.copyWith(
+          status: OrderStatus.error, errorMessage: "Erro ao carregar página"));
     }
   }
 }

@@ -35,5 +35,5 @@ class PaymentTypeModel {
   String toJson() => json.encode(toMap());
 
   factory PaymentTypeModel.fromJson(String source) =>
-      PaymentTypeModel.fromMap(json.decode(source));
+      PaymentTypeModel.fromMap(json.decode(source) as Map<String, dynamic>);
 }

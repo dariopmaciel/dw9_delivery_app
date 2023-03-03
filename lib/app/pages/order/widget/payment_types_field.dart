@@ -6,6 +6,7 @@ import 'package:flutter_awesome_select/flutter_awesome_select.dart';
 
 class PaymentTypesField extends StatelessWidget {
   final List<PaymentTypeModel> paymentTypes;
+
   const PaymentTypesField({super.key, required this.paymentTypes});
 
   @override
@@ -19,10 +20,13 @@ class PaymentTypesField extends StatelessWidget {
             style: context.textStyles.textRegular.copyWith(fontSize: 16),
           ),
           SmartSelect<String>.single(
-            title: '',
+            title: 'FORMA DE PAGAMENTO',
             selectedValue: '',
             modalType: S2ModalType.bottomSheet,
-            onChange: (value) {},
+            onChange: (value) {
+              //
+            },
+            //tileBuilde personalisa a apresentação da Seleção de pagamento, funciona sem mas fica feio
             tileBuilder: (context, state) {
               return InkWell(
                 onTap: state.showModal,
@@ -48,15 +52,15 @@ class PaymentTypesField extends StatelessWidget {
               );
             },
             choiceItems: S2Choice.listFrom<String, Map<String, String>>(
-              source: paymentTypes
-                  .map((p) => {"value": p.id.toString(), "title": p.name})
-                  .toList(),
-              // [
-              //   {'value': 'VA', 'title': 'Vale Alimentação'},
-              //   {'value': 'VR', 'title': 'Vale Refeição'},
-              //   {'value': 'CC', 'title': 'Cartão de Crédito'},
-              //   {'value': 'PIX', 'title': 'Copiar Chave'},
-              // ]
+              source:
+                  // paymentTypes
+                  //     .map((p) => {"value": p.id.toString(), "title": p.name})
+                  //     .toList(),
+                  [
+                {'value': 'VA', 'title': 'Vale Alimentação'},
+                {'value': 'VR', 'title': 'Vale Refeição'},
+                {'value': 'CC', 'title': 'Cartão de Crédito'},
+              ],
 
               //title: (index, item) => ' batata ${item['title']}',//customização em 2:03:00
               title: (index, item) => item['title'] ?? '',

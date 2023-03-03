@@ -8,6 +8,8 @@ import 'package:dark_week/app/models/payment_type_model.dart';
 
 part 'order_state.g.dart'; //28:00 //"TERMINAL: flutter pub run build_runner build"
 
+///avaliar video 5 - 34:27
+
 @match
 enum OrderStatus {
   initial,

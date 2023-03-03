@@ -129,7 +129,7 @@ class _LoginPageState extends BaseState<LoginPage, LoginController> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        "Não possui conta???",
+                        "Não possui conta?",
                         style: context.textStyles.textBold,
                       ),
                       TextButton(
